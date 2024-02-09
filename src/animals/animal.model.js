@@ -1,13 +1,12 @@
-import mongoose from "mongoose"
-import User from "./user.model.js"
+import mongoose, { Schema } from "mongoose"
 
-const animalSchema = mongoose.Schema({
+const animalSchema = Schema({
     name: {
         type: String,
         required: true
     },
     description: {
-        trype: String,
+        type: String,
         required: true
     },
     age: {
@@ -19,8 +18,10 @@ const animalSchema = mongoose.Schema({
         required: true
     },
     keeper: { 
-        type: Schema.ObjectId, 
-        ref: "User"
+        type: Schema.ObjectId, // mongoose.Schema.Types.ObjectId
+        ref: "user",
+        unique: true,
+        required: true
     }
 })
 
